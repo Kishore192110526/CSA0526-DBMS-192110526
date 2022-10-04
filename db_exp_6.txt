@@ -1,0 +1,110 @@
+mysql> USE KISHORE_S;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| mentees             |
+| ssementees          |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table ssementees add grade char(10);
+Query OK, 5 rows affected (0.29 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> update ssementees set grade="S" where Marks=99;
+Query OK, 2 rows affected (0.10 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update ssementees set grade="A" where Marks=98;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update ssementees set grade="B" where Marks=95;
+Query OK, 2 rows affected (0.08 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select*from ssementees;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
+| 192110530 | Ram     | ECE  | Chennai    | Rajan       | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select*from sse mentees where Marks BETWEEN 95 and 99;
+ERROR 1146 (42S02): Table 'kishore_s.sse' doesn't exist
+mysql> select*from ssementees where Marks BETWEEN 95 and 99;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
+| 192110530 | Ram     | ECE  | Chennai    | Rajan       | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+5 rows in set (0.02 sec)
+
+mysql> select*from ssementees where subject IN('CIV');
+Empty set (0.00 sec)
+
+mysql> select*from ssementees where subject IN('DBMS');
++-----------+---------+------+------------+-------------+---------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject | Marks | grade |
++-----------+---------+------+------------+-------------+---------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS    |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS    |    99 | S     |
++-----------+---------+------+------------+-------------+---------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select*from ssementees where Marks NOT BETWEEN 95 and 98;
++-----------+--------+------+------------+------------+--------------------+-------+-------+
+| Regno     | Name   | Dept | Address    | Fathername | subject            | Marks | grade |
++-----------+--------+------+------------+------------+--------------------+-------+-------+
+| 192110527 | Magesh | CSE  | Sivagangai | Balu       | DBMS               |    99 | S     |
+| 192110528 | Durai  | CIV  | Erode      | Nagu       | Channel hydraulics |    99 | S     |
++-----------+--------+------+------------+------------+--------------------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select sum(Marks) from ssementees where Dept='ECE';
++------------+
+| sum(Marks) |
++------------+
+|        190 |
++------------+
+1 row in set (0.09 sec)
+
+mysql> select avg(Marks) as Average from ssementees;
++---------+
+| Average |
++---------+
+| 97.2000 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(Marks) as minimum from mentees;
+ERROR 1054 (42S22): Unknown column 'Marks' in 'field list'
+mysql> select min(Marks) as minimum from ssementees;
++---------+
+| minimum |
++---------+
+|      95 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(Marks) as maximum from ssementees;
++---------+
+| maximum |
++---------+
+|      99 |
++---------+
+1 row in set (0.00 sec)
