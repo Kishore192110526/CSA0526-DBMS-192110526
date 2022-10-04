@@ -1,0 +1,79 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE KISHORE_S;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE KISHORE_S;
+Database changed
+mysql> CREATE TABLE COC_CLAN(PLAYER_ID INT,NAME CHAR(20),LEVEL INT,LEAGUE CHAR(20),POSITION_IN_CLAN CHAR(20),NO_OF_CUPS INT);
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> desc COC_CLAN;
++------------------+----------+------+-----+---------+-------+
+| Field            | Type     | Null | Key | Default | Extra |
++------------------+----------+------+-----+---------+-------+
+| PLAYER_ID        | int(11)  | YES  |     | NULL    |       |
+| NAME             | char(20) | YES  |     | NULL    |       |
+| LEVEL            | int(11)  | YES  |     | NULL    |       |
+| LEAGUE           | char(20) | YES  |     | NULL    |       |
+| POSITION_IN_CLAN | char(20) | YES  |     | NULL    |       |
+| NO_OF_CUPS       | int(11)  | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+6 rows in set (0.16 sec)
+
+mysql> ALTER TABLE COC_CLAN
+    -> ADD COLUMN TOWNHALL_LVL INT(15);
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc C0C_CLAN;
+ERROR 1146 (42S02): Table 'kishore_s.c0c_clan' doesn't exist
+mysql> desc COC_CLAN;
++------------------+----------+------+-----+---------+-------+
+| Field            | Type     | Null | Key | Default | Extra |
++------------------+----------+------+-----+---------+-------+
+| PLAYER_ID        | int(11)  | YES  |     | NULL    |       |
+| NAME             | char(20) | YES  |     | NULL    |       |
+| LEVEL            | int(11)  | YES  |     | NULL    |       |
+| LEAGUE           | char(20) | YES  |     | NULL    |       |
+| POSITION_IN_CLAN | char(20) | YES  |     | NULL    |       |
+| NO_OF_CUPS       | int(11)  | YES  |     | NULL    |       |
+| TOWNHALL_LVL     | int(15)  | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> AFTER TABLE COC_CLAN
+    -> DROP COLUMN NO_OF_CUPS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AFTER TABLE COC_CLAN
+DROP COLUMN NO_OF_CUPS' at line 1
+mysql> AFTER TABLE COC_CLAN;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AFTER TABLE COC_CLAN' at line 1
+mysql> ALTER TABLE COC_CLAN
+    -> DROP COLUMN NO_OF_CUPS;
+Query OK, 0 rows affected (0.26 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc COC_CLAN;
++------------------+----------+------+-----+---------+-------+
+| Field            | Type     | Null | Key | Default | Extra |
++------------------+----------+------+-----+---------+-------+
+| PLAYER_ID        | int(11)  | YES  |     | NULL    |       |
+| NAME             | char(20) | YES  |     | NULL    |       |
+| LEVEL            | int(11)  | YES  |     | NULL    |       |
+| LEAGUE           | char(20) | YES  |     | NULL    |       |
+| POSITION_IN_CLAN | char(20) | YES  |     | NULL    |       |
+| TOWNHALL_LVL     | int(15)  | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
