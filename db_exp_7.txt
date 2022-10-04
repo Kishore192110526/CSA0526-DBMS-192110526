@@ -1,0 +1,67 @@
+mysql> USE KISHORE_S;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| mentees             |
+| ssementees          |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from ssementees;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
+| 192110530 | Ram     | ECE  | Chennai    | Rajan       | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select*from ssementees order by Name;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110530 | Ram     | ECE  | Chennai    | Rajan       | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+5 rows in set (0.05 sec)
+
+mysql> select*from ssementees group by Marks;
++-----------+---------+------+------------+-------------+---------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject | Marks | grade |
++-----------+---------+------+------------+-------------+---------+-------+-------+
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD    |    95 | B     |
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS    |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS    |    99 | S     |
++-----------+---------+------+------------+-------------+---------+-------+-------+
+3 rows in set (0.02 sec)
+
+mysql> select*from ssementees group by Dept;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from ssementees having Marks>95;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+3 rows in set (0.00 sec)
