@@ -13,3 +13,5 @@
 [BETWEEN,IN,Aggregate function](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_6.txt)
 # Exp_7
 [Groupby,having,orderby](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_7.txt)
+# Exp_8
+[Subquery&correlated query](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_8.txt)
