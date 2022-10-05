@@ -15,3 +15,5 @@
 [Groupby,having,orderby](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_7.txt)
 # Exp_8
 [Subquery&correlated query](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_8.txt)
+# Exp_9
+[Joins](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_9.txt)
