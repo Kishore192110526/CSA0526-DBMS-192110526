@@ -1,0 +1,135 @@
+mysql> use kishore_s;
+Database changed
+mysql> select*from ssementees;
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| Regno     | Name    | Dept | Address    | Fathername  | subject            | Marks | grade |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+| 192110526 | Kishore | CSE  | Ramnad     | Senkuttuvan | DBMS               |    98 | A     |
+| 192110527 | Magesh  | CSE  | Sivagangai | Balu        | DBMS               |    99 | S     |
+| 192110528 | Durai   | CIV  | Erode      | Nagu        | Channel hydraulics |    99 | S     |
+| 192110529 | Jegan   | ECE  | Coimbatore | Dhanaraj    | PDSD               |    95 | B     |
+| 192110530 | Ram     | ECE  | Chennai    | Rajan       | PDSD               |    95 | B     |
++-----------+---------+------+------------+-------------+--------------------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table mdept(Deptid int(5),Deptname varchar(20),Rollno int(10));
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> insert into mdept values(1,"CSE",192110526);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into mdept values(2,"ECE",192110528);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into mdept values(2,"ECE",192110536);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> update mdept set Deptid=3 where Rollno=192110536;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mdept;
++--------+----------+-----------+
+| Deptid | Deptname | Rollno    |
++--------+----------+-----------+
+|      1 | CSE      | 192110526 |
+|      2 | ECE      | 192110528 |
+|      3 | ECE      | 192110536 |
++--------+----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> update mdept set Deptname="IT" where Rollno=192110528;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mdept;
++--------+----------+-----------+
+| Deptid | Deptname | Rollno    |
++--------+----------+-----------+
+|      1 | CSE      | 192110526 |
+|      2 | IT       | 192110528 |
+|      3 | ECE      | 192110536 |
++--------+----------+-----------+
+3 rows in set (0.02 sec)
+
+mysql> select Deptid,Deptname from mdept,ssementees where ssementees.Regno=mdept.Rollno;
++--------+----------+
+| Deptid | Deptname |
++--------+----------+
+|      1 | CSE      |
+|      2 | IT       |
++--------+----------+
+2 rows in set (0.06 sec)
+
+mysql> select Deptid,Deptname,Rollno from mdept,ssementees where ssementees.Regno=mdept.Rollno;
++--------+----------+-----------+
+| Deptid | Deptname | Rollno    |
++--------+----------+-----------+
+|      1 | CSE      | 192110526 |
+|      2 | IT       | 192110528 |
++--------+----------+-----------+
+2 rows in set (0.06 sec)
+
+mysql> select Name,Deptid,Deptname,Rollno from mdept m,ssementees m1 where m1.Regno=m.Rollno;
++---------+--------+----------+-----------+
+| Name    | Deptid | Deptname | Rollno    |
++---------+--------+----------+-----------+
+| Kishore |      1 | CSE      | 192110526 |
+| Durai   |      2 | IT       | 192110528 |
++---------+--------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select Name,Dept,Deptid,Deptname,Rollno from mdept,ssementees where ssementees.Regno=mdept.Rollno;
++---------+------+--------+----------+-----------+
+| Name    | Dept | Deptid | Deptname | Rollno    |
++---------+------+--------+----------+-----------+
+| Kishore | CSE  |      1 | CSE      | 192110526 |
+| Durai   | CIV  |      2 | IT       | 192110528 |
++---------+------+--------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select Rollno,Deptname,Name,Address from mdept left outer join ssementees on mdept.Rollno=ssementees.Regno;
++-----------+----------+---------+---------+
+| Rollno    | Deptname | Name    | Address |
++-----------+----------+---------+---------+
+| 192110526 | CSE      | Kishore | Ramnad  |
+| 192110528 | IT       | Durai   | Erode   |
+| 192110536 | ECE      | NULL    | NULL    |
++-----------+----------+---------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select Rollno,Deptname,Name,Address from mdept right outer join ssementees on mdept.Rollno=mentees.Regno;
+ERROR 1054 (42S22): Unknown column 'mentees.Regno' in 'on clause'
+mysql> select Rollno,Deptname,Name,Address from mdept right outer join ssementees on mdept.Rollno=ssementees.Regno;
++-----------+----------+---------+------------+
+| Rollno    | Deptname | Name    | Address    |
++-----------+----------+---------+------------+
+| 192110526 | CSE      | Kishore | Ramnad     |
+|      NULL | NULL     | Magesh  | Sivagangai |
+| 192110528 | IT       | Durai   | Erode      |
+|      NULL | NULL     | Jegan   | Coimbatore |
+|      NULL | NULL     | Ram     | Chennai    |
++-----------+----------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into mdept values(4,"ENE",192110527);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into mdept values(5,"COM",192110529);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into mdept values(6,"BME",192110530);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select Rollno,Deptname,Name,Address from mdept right outer join ssementees on mdept.Rollno=ssementees.Regno;
++-----------+----------+---------+------------+
+| Rollno    | Deptname | Name    | Address    |
++-----------+----------+---------+------------+
+| 192110526 | CSE      | Kishore | Ramnad     |
+| 192110527 | ENE      | Magesh  | Sivagangai |
+| 192110528 | IT       | Durai   | Erode      |
+| 192110529 | COM      | Jegan   | Coimbatore |
+| 192110530 | BME      | Ram     | Chennai    |
++-----------+----------+---------+------------+
+5 rows in set (0.00 sec)
+
