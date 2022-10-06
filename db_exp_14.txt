@@ -1,0 +1,83 @@
+mysql> use kishore_s;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| ffplayer            |
+| mdept               |
+| movies              |
+| per                 |
+| score_view          |
+| ssementees          |
+| ssementees1         |
++---------------------+
+10 rows in set (0.28 sec)
+
+mysql> desc coc_clan;
++------------------+----------+------+-----+---------+-------+
+| Field            | Type     | Null | Key | Default | Extra |
++------------------+----------+------+-----+---------+-------+
+| PLAYER_ID        | int(11)  | NO   | PRI | 0       |       |
+| NAME             | char(20) | YES  |     | NULL    |       |
+| LEVEL            | int(11)  | YES  |     | NULL    |       |
+| LEAGUE           | char(20) | YES  |     | NULL    |       |
+| POSITION_IN_CLAN | char(20) | YES  |     | NULL    |       |
+| TOWNHALL_LVL     | int(15)  | YES  |     | NULL    |       |
++------------------+----------+------+-----+---------+-------+
+6 rows in set (0.45 sec)
+
+mysql> create user Kishore;
+Query OK, 0 rows affected (0.99 sec)
+
+mysql> grant all on coc_clan to Kishore;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show grants for Kishore;
++-----------------------------------------------------------------+
+| Grants for Kishore@%                                            |
++-----------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Kishore'@'%'                             |
+| GRANT ALL PRIVILEGES ON `kishore_s`.`coc_clan` TO 'Kishore'@'%' |
++-----------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke all on coc_clan from Kishore;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show grants for Kishore;
++-------------------------------------+
+| Grants for Kishore@%                |
++-------------------------------------+
+| GRANT USAGE ON *.* TO 'Kishore'@'%' |
++-------------------------------------+
+1 row in set (0.00 sec)
+mysql> grant select,update on coc_player to Kishore;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show grants for Kishore;
++-------------------------------------------------------------------+
+| Grants for Kishore@%                                              |
++-------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Kishore'@'%'                               |
+| GRANT SELECT, UPDATE ON `kishore_s`.`coc_player` TO 'Kishore'@'%' |
++-------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke update on coc_player form Kishore;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form Kishore' at line 1
+mysql> revoke update on coc_player from Kishore;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Kishore;
++-----------------------------------------------------------+
+| Grants for Kishore@%                                      |
++-----------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Kishore'@'%'                       |
+| GRANT SELECT ON `kishore_s`.`coc_player` TO 'Kishore'@'%' |
++-----------------------------------------------------------+
+2 rows in set (0.00 sec)
+
