@@ -1,0 +1,113 @@
+mysql> use kishore_s;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| ffplayer            |
+| mdept               |
+| per                 |
+| score_view          |
+| ssementees          |
+| ssementees1         |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select*from ffplayer;
++----------+----------+--------+---------+---------+-------+-----------+
+| playerno | Name     | guild  | Address | prename | score | map       |
++----------+----------+--------+---------+---------+-------+-----------+
+|  1921123 | Kishore  | TGB    | Ramnad  | shroff  |    99 | purgatory |
+|  1921124 | saran    | TGB    | Ramnad  | sathya  |    98 | purgatory |
+|  1921125 | st007    | wolf   | chennai | rocky   |    96 | Bermuda   |
+|  1921126 | RRR      | gtking | covai   | raju    |    95 | kalahari  |
+|  1921127 | bahubali | dumki  | karur   | ravi    |    94 | alphine   |
++----------+----------+--------+---------+---------+-------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Name,score,CASE WHEN score>95 THEN 'Excellent' WHEN score >90 THEN 'Good' ELSE 'Average' END AS performance FROM ffplayer;
++----------+-------+-------------+
+| Name     | score | performance |
++----------+-------+-------------+
+| Kishore  |    99 | Excellent   |
+| saran    |    98 | Excellent   |
+| st007    |    96 | Excellent   |
+| RRR      |    95 | Good        |
+| bahubali |    94 | Good        |
++----------+-------+-------------+
+5 rows in set (0.06 sec)
+
+mysql> SELECT Name,score,if(score>=95,"Excellent marks","Good marks") from ffplayer;
++----------+-------+----------------------------------------------+
+| Name     | score | if(score>=95,"Excellent marks","Good marks") |
++----------+-------+----------------------------------------------+
+| Kishore  |    99 | Excellent marks                              |
+| saran    |    98 | Excellent marks                              |
+| st007    |    96 | Excellent marks                              |
+| RRR      |    95 | Excellent marks                              |
+| bahubali |    94 | Good marks                                   |
++----------+-------+----------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION REPEAT_DEMO(INC INT)
+    -> RETURNS CHAR(40)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE INCOME INT;
+    -> SET INCOME=0;
+    -> REPEAT
+    -> SET INCOME=INCOME+INC;
+    -> UNTIL INCOME>4000
+    -> END REPEAT;
+    -> RETURN "INCOME>4000 DETECTED";
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.71 sec)
+
+mysql> SELECT REPEAT_DEMO(3000);$$
++----------------------+
+| REPEAT_DEMO(3000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.07 sec)
+
+mysql> SELECT REPEAT_DEMO(4000);$$
++----------------------+
+| REPEAT_DEMO(4000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION WHILE_DEMO(VALUE CHAR(1))
+    -> RETURNS CHAR(20)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE STR CHAR(100);
+    -> DECLARE I INT;
+    -> SET STR='';
+    -> SET I=1;
+    -> LABEL:
+    -> WHILE I<=5 DO
+    -> SET STR=CONCAT(STR,VALUE);
+    -> SET I=I+1;
+    -> END WHILE LABEL;
+    -> RETURN STR;
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> SELECT WHILE_DEMO('A');$$
++-----------------+
+| WHILE_DEMO('A') |
++-----------------+
+| AAAAA           |
++-----------------+
+1 row in set (0.06 sec)
+
