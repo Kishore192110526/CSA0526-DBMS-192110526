@@ -27,3 +27,5 @@
 [savepoint](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_13.txt)
 # Exp_14
 [grant,revoke](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_14.txt)
+# Exp_15
+[HLPE procedures](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_15.txt)
