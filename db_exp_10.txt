@@ -1,0 +1,118 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 31
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use kishore_s;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| ffplayer            |
+| mdept               |
+| ssementees          |
+| ssementees1         |
++---------------------+
+7 rows in set (0.09 sec)
+
+mysql> select*from ffplayer;
++----------+----------+--------+---------+---------+-------+-----------+
+| playerno | Name     | guild  | Address | prename | score | map       |
++----------+----------+--------+---------+---------+-------+-----------+
+|  1921123 | Kishore  | TGB    | Ramnad  | shroff  |    99 | purgatory |
+|  1921124 | saran    | TGB    | Ramnad  | sathya  |    98 | purgatory |
+|  1921125 | st007    | wolf   | chennai | rocky   |    96 | Bermuda   |
+|  1921126 | RRR      | gtking | covai   | raju    |    95 | kalahari  |
+|  1921127 | bahubali | dumki  | karur   | ravi    |    94 | alphine   |
++----------+----------+--------+---------+---------+-------+-----------+
+5 rows in set (0.10 sec)
+
+mysql> create view score_view as select map,scores from ffplayers;
+ERROR 1146 (42S02): Table 'kishore_s.ffplayers' doesn't exist
+mysql> create view score_view as select map,scores from ffplayer;
+ERROR 1054 (42S22): Unknown column 'scores' in 'field list'
+mysql> create view score_view as select map,score from ffplayer;
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> select*from scores_view;
+ERROR 1146 (42S02): Table 'kishore_s.scores_view' doesn't exist
+mysql> select*from score_view;
++-----------+-------+
+| map       | score |
++-----------+-------+
+| purgatory |    99 |
+| purgatory |    98 |
+| Bermuda   |    96 |
+| kalahari  |    95 |
+| alphine   |    94 |
++-----------+-------+
+5 rows in set (0.15 sec)
+
+mysql> create index map on ffplayer(map);
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from ffplayer;
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| ffplayer |          1 | map      |            1 | map         | A         |           5 |     NULL | NULL   | YES  | BTREE      |         |               |
++----------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.08 sec)
+
+mysql> create table per(pid int NOT NULL AUTO_INCREMENT,Name varchar(50),Age int(3),PRIMARY KEY(pid));
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> desc per;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| pid   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Name  | varchar(50) | YES  |     | NULL    |                |
+| Age   | int(3)      | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.15 sec)
+
+mysql> alter table per AUTO_INCREMENT=100;
+Query OK, 0 rows affected (0.36 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into per9Nmae,Age) values ("Kishore",41);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Age) values ("Kishore",41)' at line 1
+mysql> insert into per(Name,Age) values ("Kishore",41);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select*from per;
++-----+---------+------+
+| pid | Name    | Age  |
++-----+---------+------+
+| 100 | Kishore |   41 |
++-----+---------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into per(Nmae,Age) values ("Varun",30);
+ERROR 1054 (42S22): Unknown column 'Nmae' in 'field list'
+mysql> insert into per(Name,Age) values ("Varun",30);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select*from per;
++-----+---------+------+
+| pid | Name    | Age  |
++-----+---------+------+
+| 100 | Kishore |   41 |
+| 101 | Varun   |   30 |
++-----+---------+------+
+2 rows in set (0.00 sec)
+
