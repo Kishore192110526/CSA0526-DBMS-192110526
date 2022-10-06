@@ -17,3 +17,5 @@
 [Subquery&correlated query](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_8.txt)
 # Exp_9
 [Joins](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_9.txt)
+# Exp_10
+[view,index,sequence](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_10.txt)
