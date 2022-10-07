@@ -29,3 +29,5 @@
 [grant,revoke](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_14.txt)
 # Exp_15
 [HLPE procedures](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_15.txt)
+# Exp_16
+[HLPE functions](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_16.txt)
