@@ -1,0 +1,140 @@
+mysql> use kishore_s;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_kishore_s |
++---------------------+
+| chess_players       |
+| coc_clan            |
+| coc_player          |
+| edept               |
+| employee1           |
+| ffplayer            |
+| marks               |
+| mdept               |
+| movies              |
+| pdept               |
+| per                 |
+| professor           |
+| score_view          |
+| ssementees          |
+| ssementees1         |
++---------------------+
+15 rows in set (0.11 sec)
+
+mysql> create table songs_book(Book_no int(5),Book_name varchar(30),singer_name varchar(30),cost int(4),Edition int(2));
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> insert into songs_book values(100,"vaa vaa nilava","Anirudh",500,1);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into songs_book values(101,"Arabic kuthu","jonita",650,3);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into songs_book values(102,"Ponninadhi paakanume","AR rahuman",1400,4);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into songs_book values(103,"lets be friends","Harish kalyan",1200,5);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select*from songs_book;
++---------+----------------------+---------------+------+---------+
+| Book_no | Book_name            | singer_name   | cost | Edition |
++---------+----------------------+---------------+------+---------+
+|     100 | vaa vaa nilava       | Anirudh       |  500 |       1 |
+|     101 | Arabic kuthu         | jonita        |  650 |       3 |
+|     102 | Ponninadhi paakanume | AR rahuman    | 1400 |       4 |
+|     103 | lets be friends      | Harish kalyan | 1200 |       5 |
++---------+----------------------+---------------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update songs_book set singer_name="illayaraja" where Book_no=100;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from songs_book;
++---------+----------------------+---------------+------+---------+
+| Book_no | Book_name            | singer_name   | cost | Edition |
++---------+----------------------+---------------+------+---------+
+|     100 | vaa vaa nilava       | illayaraja    |  500 |       1 |
+|     101 | Arabic kuthu         | jonita        |  650 |       3 |
+|     102 | Ponninadhi paakanume | AR rahuman    | 1400 |       4 |
+|     103 | lets be friends      | Harish kalyan | 1200 |       5 |
++---------+----------------------+---------------+------+---------+
+4 rows in set (0.00 sec)
+
+mysql> create table Singers(Singer_id int(4),Singer_name varchar(30),Research_area varchar(30));
+Query OK, 0 rows affected (0.25 sec)
+
+mysql> insert into Singers values(200,"gv prakash","romance");
+Query OK, 1 row affected (0.37 sec)
+
+mysql> insert into Singers values(201,"Dhanush","love");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into Singers values(202,"simbu","love failure");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Singers values(203,"na muthukumar","motivation");
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select*from Singers;
++-----------+---------------+---------------+
+| Singer_id | Singer_name   | Research_area |
++-----------+---------------+---------------+
+|       200 | gv prakash    | romance       |
+|       201 | Dhanush       | love          |
+|       202 | simbu         | love failure  |
+|       203 | na muthukumar | motivation    |
++-----------+---------------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> select singer_name from songs_book where Book_name="Arabic kuthu";
++-------------+
+| singer_name |
++-------------+
+| jonita      |
++-------------+
+1 row in set (0.06 sec)
+
+mysql> select Edition from songs_book where Book_name="lets be friends";
++---------+
+| Edition |
++---------+
+|       5 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> alter table songs_book add Published_year int(4);
+Query OK, 4 rows affected (0.58 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> update songs_book set Published_year=1995 where Boono=101;
+ERROR 1054 (42S22): Unknown column 'Boono' in 'where clause'
+mysql> update songs_book set Published_year=1995 where Book_no=101;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update songs_book set Published_year=1992 where Book_no=102;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update songs_book set Published_year=1990 where Book_no=103;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update songs_book set Published_year=1998 where Book_no=100;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from songs_book;
++---------+----------------------+---------------+------+---------+----------------+
+| Book_no | Book_name            | singer_name   | cost | Edition | Published_year |
++---------+----------------------+---------------+------+---------+----------------+
+|     100 | vaa vaa nilava       | illayaraja    |  500 |       1 |           1998 |
+|     101 | Arabic kuthu         | jonita        |  650 |       3 |           1995 |
+|     102 | Ponninadhi paakanume | AR rahuman    | 1400 |       4 |           1992 |
+|     103 | lets be friends      | Harish kalyan | 1200 |       5 |           1990 |
++---------+----------------------+---------------+------+---------+----------------+
+4 rows in set (0.00 sec)
+
