@@ -41,3 +41,5 @@
 [Book publishing company](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_22.txt)
 # Exp_23
 [General Hospital](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_23.txt)
+# Exp_24
+[car rental company}(https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_24.txt)
