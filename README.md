@@ -35,3 +35,5 @@
 [Repeat,Replicate](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_17.txt)
 # Exp_18
 [commit,rollback](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_18.txt)
+# Exp_19
+[Database connectivity](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_19.txt)
