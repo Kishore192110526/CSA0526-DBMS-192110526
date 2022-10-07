@@ -31,3 +31,5 @@
 [HLPE procedures](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_15.txt)
 # Exp_16
 [HLPE functions](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_16.txt)
+# Exp_17
+[Repeat,Replicate](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_17.txt)
