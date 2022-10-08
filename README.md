@@ -37,6 +37,8 @@
 [commit,rollback](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_18.txt)
 # Exp_19
 [Database connectivity](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_19.txt)
+# Exp_20
+[Basic sql queries](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_20.txt)
 # Exp_22
 [Book publishing company](https://github.com/Kishore192110526/CSA0526-DBMS-192110526/blob/main/db_exp_22.txt)
 # Exp_23
